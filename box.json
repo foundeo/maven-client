@@ -1,7 +1,7 @@
 {
     "name":"maven-client",
     "slug":"maven-client",
-    "version":"0.0.1",
+    "version":"0.0.2",
     "description":"A maven client to request packages and construct download urls.",
     "devDependencies":{
         "testbox":"^4.0"
@@ -15,7 +15,7 @@
         "testbox":"testbox/"
     },
     "private":false,
-    "location":"foundeo/maven-client#v0.0.1",
+    "location":"foundeo/maven-client#v0.0.2",
     "homepage":"https://github.com/foundeo/maven-client/",
     "documentation":"https://github.com/foundeo/maven-client/",
     "repository":{
@@ -49,5 +49,4 @@
         "watchPaths":"**.cfc"
     },
     "type":"modules"
-    
 }
