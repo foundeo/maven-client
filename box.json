@@ -1,5 +1,6 @@
 {
     "name":"maven-client",
+    "slug":"maven-client",
     "version":"0.0.1",
     "description":"A maven client to request packages and construct download urls.",
     "devDependencies":{
@@ -14,14 +15,20 @@
         "testbox":"testbox/"
     },
     "private":false,
-    "projectURL":"",
+    "location":"foundeo/maven-client#v0.0.1",
+    "homepage":"https://github.com/foundeo/maven-client/",
+    "documentation":"https://github.com/foundeo/maven-client/",
     "repository":{
-        "type":"",
-        "URL":""
+        "type":"git",
+        "URL":"https://github.com/foundeo/maven-client"
     },
-    "scripts":{},
-    "shortDescription":"A sweet package",
-    "slug":"my-package",
+    "bugs":"https://github.com/foundeo/maven-client/issues",
+    "scripts":{
+        "postVersion":"package set location='foundeo/maven-client#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push && git push --tags"
+    },
+    "shortDescription":"Maven repository client written in CFML",
     "testbox":{
         "bundles":"",
         "directory":"tests.specs",
