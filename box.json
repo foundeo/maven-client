@@ -1,0 +1,46 @@
+{
+    "name":"maven-client",
+    "version":"0.0.1",
+    "description":"A maven client to request packages and construct download urls.",
+    "devDependencies":{
+        "testbox":"^4.0"
+    },
+    "ignore":[
+        "**/.*",
+        "/test/",
+        "/tests/"
+    ],
+    "installPaths":{
+        "testbox":"testbox/"
+    },
+    "private":false,
+    "projectURL":"",
+    "repository":{
+        "type":"",
+        "URL":""
+    },
+    "scripts":{},
+    "shortDescription":"A sweet package",
+    "slug":"my-package",
+    "testbox":{
+        "bundles":"",
+        "directory":"tests.specs",
+        "labels":"",
+        "options":{},
+        "recurse":true,
+        "reporter":"",
+        "runner":[
+            {
+                "default":""
+            }
+        ],
+        "testBundles":"",
+        "testSpecs":"",
+        "testSuites":"",
+        "verbose":true,
+        "watchDelay":500,
+        "watchPaths":"**.cfc"
+    },
+    "type":"modules"
+    
+}
