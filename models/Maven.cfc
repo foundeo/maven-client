@@ -152,6 +152,7 @@ component {
 		var deps = [];
 		var prop = "";
 		var p = "";
+		var parentXml = "";
 		//Default scope is compile: https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html
 		for (dep in node.XmlChildren) {
 			d = {"groupId":"", "artifactId":"", "scope":"compile", "type":"", "version":"", "optional":false};
@@ -159,7 +160,7 @@ component {
 			d.artifactId = dep.artifactId.xmlText;
 			if (dep.keyExists("version")) {
 				d.version = dep.version.xmlText;
-				if (d.version == "${project.version}") {
+				if (d.version == "${project.version}" && rootXml.XmlRoot.keyExists("version")) {
 					d.version = rootXml.XmlRoot.version.xmlText;
 				} else if (d.version contains "${" && rootXml.XmlRoot.keyExists("properties")) {
 					//check properties ${prop.name}
@@ -168,6 +169,21 @@ component {
 							d.version = replace(d.version, "${" & prop.XmlName & "}", prop.xmlText);
 						}
 					}
+				}
+				if (d.version contains "${" && rootXml.XmlRoot.keyExists("parent")) {
+					//check parent for properties
+					parentXml = getArtifactVersion(rootXml.XmlRoot.parent.groupId.XmlText, rootXml.XmlRoot.parent.artifactId.XmlText, rootXml.XmlRoot.parent.version.XmlText);
+					parentXml = parentXml.xml;
+					if (d.version == "${project.version}" && parentXml.XmlRoot.keyExists("version")) {
+						d.version = parentXml.XmlRoot.version.xmlText;
+					} else {
+						for (prop in parentXml.XmlRoot.properties.XmlChildren) {
+							if (find("${" & prop.XmlName & "}", d.version)) {
+								d.version = replace(d.version, "${" & prop.XmlName & "}", prop.xmlText);
+							}
+						}
+					}
+					
 				}
 			}
 			if (dep.keyExists("scope")) {
